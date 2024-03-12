@@ -74,6 +74,11 @@ function borrarTarea() {
             if (listaTareas[indice - 1].completada) {
                 listaTareas.splice(indice - 1, 1);
                 alert("Tarea borrada.");
+
+                // Actualizar los IDs de las tareas restantes
+                listaTareas.forEach(function(tarea, index) {
+                    tarea.id = index + 1;
+                });
             } else {
                 alert("No se puede borrar una tarea que no está completada.");
             }
