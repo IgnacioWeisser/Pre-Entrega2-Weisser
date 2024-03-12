@@ -11,10 +11,10 @@ class Tarea {
     }
 }
 
-// Array para almacenar las tareas
+
 let listaTareas = [];
 
-// Función para agregar una tarea a la lista
+
 function agregarTarea() {
     let descripcion = prompt("Ingrese la nueva tarea:");
     let nuevaTarea = new Tarea(listaTareas.length + 1, descripcion, false);
@@ -22,7 +22,7 @@ function agregarTarea() {
     alert("Tarea agregada: " + descripcion);
 }
 
-// Función para ver la lista de tareas
+
 function verTareas() {
     if (listaTareas.length === 0) {
         alert("No hay tareas en la lista.");
@@ -36,7 +36,7 @@ function verTareas() {
     }
 }
 
-// Función para marcar una tarea como completada
+
 function completarTarea() {
     if (listaTareas.length === 0) {
         alert("No hay tareas para marcar como completadas.");
@@ -56,7 +56,7 @@ function completarTarea() {
     }
 }
 
-// Función para borrar una tarea de la lista
+
 function borrarTarea() {
     if (listaTareas.length === 0) {
         alert("No hay tareas para borrar.");
@@ -75,7 +75,7 @@ function borrarTarea() {
                 listaTareas.splice(indice - 1, 1);
                 alert("Tarea borrada.");
 
-                // Actualizar los IDs de las tareas restantes
+                
                 listaTareas.forEach(function(tarea, index) {
                     tarea.id = index + 1;
                 });
@@ -86,7 +86,7 @@ function borrarTarea() {
     }
 }
 
-// Función principal para el manejo de la lista de tareas
+
 function gestionarTareas() {
     let opcion;
     do {
@@ -113,5 +113,5 @@ function gestionarTareas() {
     } while (opcion !== "5");
 }
 
-// Iniciamos la gestión de tareas
+
 gestionarTareas();
