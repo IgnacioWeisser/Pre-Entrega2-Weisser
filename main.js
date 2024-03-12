@@ -1,7 +1,4 @@
-
-
-
-
+// Checklist
 
 class Tarea {
     constructor(id, descripcion, completada) {
@@ -115,3 +112,5 @@ function gestionarTareas() {
 
 
 gestionarTareas();
+
+
