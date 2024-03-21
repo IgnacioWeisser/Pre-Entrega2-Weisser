@@ -14,9 +14,13 @@ let historialTareasCompletadas = [];
 
 function agregarTarea() {
     let descripcion = prompt("Ingrese la nueva tarea:");
-    let nuevaTarea = new Tarea(listaTareas.length + 1, descripcion, false);
-    listaTareas.push(nuevaTarea);
-    alert("Tarea agregada: " + descripcion);
+    if (descripcion !== null && descripcion.trim() !== "") {
+        let nuevaTarea = new Tarea(listaTareas.length + 1, descripcion, false);
+        listaTareas.push(nuevaTarea);
+        alert("Tarea agregada: " + descripcion);
+    } else {
+        alert("La descripción de la tarea no puede estar vacía.");
+    }
 }
 
 function verTareas() {
