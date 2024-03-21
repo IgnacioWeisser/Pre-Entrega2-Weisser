@@ -5,7 +5,7 @@ class Tarea {
         this.id = id;
         this.descripcion = descripcion;
         this.completada = completada;
-        this.fechaCreacion = new Date();
+        
     }
 }
 
