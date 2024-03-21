@@ -14,7 +14,7 @@ let historialTareasCompletadas = [];
 
 function agregarTarea() {
     let descripcion = prompt("Ingrese la nueva tarea:");
-    if (descripcion !== null) {
+    if (descripcion !== null) { // Verificar si el usuario no ha cancelado el prompt
         descripcion = descripcion.trim();
         if (descripcion !== "") {
             let nuevaTarea = new Tarea(listaTareas.length + 1, descripcion, false);
@@ -23,6 +23,8 @@ function agregarTarea() {
         } else {
             alert("La descripción de la tarea no puede estar vacía.");
         }
+    } else {
+        alert("Operación cancelada."); // Manejar caso en que el usuario presiona "Cancelar"
     }
 }
 
