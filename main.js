@@ -24,7 +24,7 @@ function verTareas() {
         alert("No hay tareas en la lista.");
     } else {
         let mensaje = "Lista de tareas disponibles:\n\n";
-        listaTareas.forEach(function (tarea) {
+        listaTareas.forEach(function(tarea) {
             let estado = tarea.completada ? "completada" : "pendiente";
             mensaje += tarea.id + ". " + tarea.descripcion + " - Estado: " + estado + "\n";
         });
@@ -33,12 +33,12 @@ function verTareas() {
 }
 
 function completarTarea() {
-    let tareasDisponibles = listaTareas.filter(tarea => !tarea.completada);
+    let tareasDisponibles = listaTareas.filter(tarea => !tarea.completada); 
     if (tareasDisponibles.length === 0) {
         alert("No hay tareas disponibles para marcar como completadas.");
     } else {
         let mensaje = "Seleccione la tarea que desea marcar como completada:\n\n";
-        tareasDisponibles.forEach(function (tarea, index) {
+        tareasDisponibles.forEach(function(tarea, index) {
             mensaje += (index + 1) + ". " + tarea.descripcion + "\n";
         });
         let indice = prompt(mensaje);
@@ -56,20 +56,20 @@ function completarTarea() {
 }
 
 function borrarTarea() {
-    let tareasNoCompletadas = listaTareas.filter(tarea => !tarea.completada); // Filtrar las tareas no completadas
-    if (tareasNoCompletadas.length === 0) {
-        alert("No hay tareas pendientes para borrar.");
+    if (listaTareas.length === 0) {
+        alert("No hay tareas para borrar.");
     } else {
         let mensaje = "Seleccione la tarea que desea borrar:\n\n";
-        tareasNoCompletadas.forEach(function(tarea, index) {
-            mensaje += (index + 1) + ". " + tarea.descripcion + "\n";
+        listaTareas.forEach(function(tarea, index) {
+            let estado = tarea.completada ? "completada" : "pendiente";
+            mensaje += (index + 1) + ". " + tarea.descripcion + " - Estado: " + estado + "\n";
         });
         let indice = prompt(mensaje);
         indice = parseInt(indice);
-        if (isNaN(indice) || indice < 1 || indice > tareasNoCompletadas.length) {
+        if (isNaN(indice) || indice < 1 || indice > listaTareas.length) {
             alert("Índice inválido.");
         } else {
-            let tareaBorrada = listaTareas.find(tarea => tarea.id === tareasNoCompletadas[indice - 1].id);
+            let tareaBorrada = listaTareas.find(tarea => tarea.id === indice);
             listaTareas = listaTareas.filter(tarea => tarea.id !== tareaBorrada.id);
             alert("Tarea borrada.");
 
@@ -85,7 +85,7 @@ function mostrarTareasCompletadas() {
         alert("No hay tareas completadas en el historial.");
     } else {
         let mensaje = "Historial de tareas completadas:\n\n";
-        historialTareasCompletadas.forEach(function (tarea, index) {
+        historialTareasCompletadas.forEach(function(tarea, index) {
             mensaje += (index + 1) + ". " + tarea.descripcion + "\n";
         });
         alert(mensaje);
