@@ -56,24 +56,24 @@ function completarTarea() {
 }
 
 function borrarTarea() {
-    if (listaTareas.length === 0) {
-        alert("No hay tareas para borrar.");
+    let tareasNoCompletadas = listaTareas.filter(tarea => !tarea.completada); // Filtrar las tareas no completadas
+    if (tareasNoCompletadas.length === 0) {
+        alert("No hay tareas pendientes para borrar.");
     } else {
         let mensaje = "Seleccione la tarea que desea borrar:\n\n";
-        listaTareas.forEach(function (tarea, index) {
-            let estado = tarea.completada ? "completada" : "pendiente";
-            mensaje += (index + 1) + ". " + tarea.descripcion + " - Estado: " + estado + "\n";
+        tareasNoCompletadas.forEach(function(tarea, index) {
+            mensaje += (index + 1) + ". " + tarea.descripcion + "\n";
         });
         let indice = prompt(mensaje);
         indice = parseInt(indice);
-        if (isNaN(indice) || indice < 1 || indice > listaTareas.length) {
+        if (isNaN(indice) || indice < 1 || indice > tareasNoCompletadas.length) {
             alert("Índice inválido.");
         } else {
-            let tareaBorrada = listaTareas.find(tarea => tarea.id === indice);
+            let tareaBorrada = listaTareas.find(tarea => tarea.id === tareasNoCompletadas[indice - 1].id);
             listaTareas = listaTareas.filter(tarea => tarea.id !== tareaBorrada.id);
             alert("Tarea borrada.");
 
-            listaTareas.forEach(function (tarea, index) {
+            listaTareas.forEach(function(tarea, index) {
                 tarea.id = index + 1;
             });
         }
